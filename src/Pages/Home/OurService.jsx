@@ -27,11 +27,11 @@ const OurService = () => {
           },
           {
             title: "Nationwide Delivery",
-            desc: "We deliver parcels nationwide with home delivery in every district.",
+            desc: "We deliver parcels nationwide with home delivery in every district, ensuring your products reach customers within 48–72 hours.",
           },
           {
             title: "Fulfillment Solution",
-            desc: "We offer inventory management, order processing, packaging, and after-sales support.",
+            desc: "We also offer customized service with inventory management support, online order processing, packaging, and after sales support.",
           },
           {
             title: "Cash on Home Delivery",
@@ -43,13 +43,13 @@ const OurService = () => {
           },
           {
             title: "Parcel Return / Exchange",
-            desc: "Reverse logistics service for customer product returns and exchanges.",
+            desc: "Through our reverse logistics facility we allow end customers to return or exchange their products with online business merchants.",
           },
         ].map((item, i) => (
           <div
             key={i}
-            className="w-full h-auto p-8 bg-white rounded-2xl shadow-sm border border-gray-100
-                       hover:shadow-lg hover:-translate-y-1 transition-all duration-300
+            className="w-full h-auto p-8 bg-white rounded-2xl  border-gray-100
+                       hover:shadow-lg hover:-translate-y-1 hover:bg-primary transition-all duration-300
                        flex flex-col items-center text-center gap-4"
           >
         
