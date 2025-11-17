@@ -5,6 +5,7 @@ import OurService from './OurService';
 import Brands from './Brands';
 import Extrasection from './Extrasection';
 import Marchent from './Marchent';
+import Reviews from './Reviews';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
            {/* <Brands></Brands> */}
            <Extrasection></Extrasection>
            <Marchent></Marchent>
+           <Reviews></Reviews>
            
 
         
