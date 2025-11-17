@@ -3,7 +3,7 @@ import logo from "../../assets/service.png";
 
 const OurService = () => {
   return (
-    <div className="container mx-auto bg-secondary rounded-2xl p-10 md:p-16">
+    <div className="container mx-auto bg-secondary rounded-3xl p-10 md:p-16">
       
       {/* Heading */}
       <div className="text-center mb-10">
