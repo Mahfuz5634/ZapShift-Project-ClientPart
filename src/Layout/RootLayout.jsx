@@ -5,11 +5,15 @@ import Footer from '../Pages/Footer';
 
 const RootLayout = () => {
     return (
-        <div>
+       <div className='bg-[#eaeced]'>
+         <div className='container mx-auto pt-5 '>
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            <div className='min-h-screen flex flex-1'>
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </div>
+       </div>
     );
 };
 
