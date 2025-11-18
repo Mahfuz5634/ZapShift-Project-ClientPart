@@ -7,10 +7,10 @@ const Navbar = () => {
     const links = (
   <>
     <NavLink
-      to="/services"
+      to="/"
       className={({ isActive }) =>
-        `mr-1 px-2 py-1 rounded-md ${
-          isActive ? "bg-[#caeb66] text-black font-medium" : ""
+        `mr-1 px-2 py-1 rounded-md font-bold ${
+          isActive ? "bg-[#caeb66] text-black font-bold " : ""
         }`
       }
     >
@@ -20,8 +20,8 @@ const Navbar = () => {
     <NavLink
       to="/covarage"
       className={({ isActive }) =>
-        `mr-1 px-2 py-1 rounded-md ${
-          isActive ? "bg-[#caeb66] text-black font-medium" : ""
+        `mr-1 px-2 py-1 rounded-md font-bold ${
+          isActive ? "bg-[#caeb66] text-black font-bold" : ""
         }`
       }
     >
@@ -31,8 +31,8 @@ const Navbar = () => {
     <NavLink
       to="/about-us"
       className={({ isActive }) =>
-        `mr-1 px-2 py-1 rounded-md ${
-          isActive ? "bg-[#caeb66] text-black font-medium" : ""
+        `mr-1 px-2 py-1 rounded-md font-bold ${
+          isActive ? "bg-[#caeb66] text-black font-bold" : ""
         }`
       }
     >
@@ -42,8 +42,8 @@ const Navbar = () => {
     <NavLink
       to="/pricing"
       className={({ isActive }) =>
-        `mr-1 px-2 py-1 rounded-md ${
-          isActive ? "bg-[#caeb66] text-black font-medium" : ""
+        `mr-1 px-2 py-1 rounded-md font-bold ${
+          isActive ? "bg-[#caeb66] text-black font-bold" : ""
         }`
       }
     >
@@ -53,8 +53,8 @@ const Navbar = () => {
     <NavLink
       to="/blog"
       className={({ isActive }) =>
-        `mr-1 px-2 py-1 rounded-md ${
-          isActive ? "bg-[#caeb66] text-black font-medium" : ""
+        `mr-1 px-2 py-1 rounded-md font-bold ${
+          isActive ? "bg-[#caeb66] text-black font-bold" : ""
         }`
       }
     >
@@ -64,8 +64,8 @@ const Navbar = () => {
     <NavLink
       to="/contact"
       className={({ isActive }) =>
-        `mr-1 px-2 py-1 rounded-md ${
-          isActive ? "bg-[#caeb66] text-black font-medium" : ""
+        `mr-1 px-2 py-1 rounded-md font-bold ${
+          isActive ? "bg-[#caeb66] text-black font-bold" : ""
         }`
       }
     >

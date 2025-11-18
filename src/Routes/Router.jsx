@@ -3,6 +3,9 @@ import RootLayout from "../Layout/RootLayout";
 import Home from "../Pages/Home/Home";
 import Covarage from "../Pages/Covarage";
 import AboutUs from "../Pages/Aboutus";
+import AuthLayout from "../Layout/AuthLayout";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
 
 export const router = createBrowserRouter([
   {
@@ -22,4 +25,18 @@ export const router = createBrowserRouter([
     }
    ]
   },
+  {
+    path:'/',
+    Component:AuthLayout,
+    children:[
+      {
+        path:'/login',
+        Component:Login
+      },{
+        path:'/register',
+        Component:Register
+
+      }
+    ]
+  }
 ]);
