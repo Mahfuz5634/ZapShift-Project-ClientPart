@@ -43,7 +43,7 @@ const Banner = () => {
       </div>
       <div>
         <img src={img3} />
-        <div className="absolute hidden lg:block lg:top-120 lg:left-22 transform -translate-y-1/2 space-x-3">
+        <div className="absolute  lg:top-120 lg:left-22 transform -translate-y-1/2 space-x-3">
           <button className="rounded-full btn bg-primary px-4 py-2 shadow ">
             Track Your Parcel <GoArrowRight></GoArrowRight>
           </button>

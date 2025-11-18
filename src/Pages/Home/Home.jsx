@@ -6,6 +6,10 @@ import Brands from './Brands';
 import Extrasection from './Extrasection';
 import Marchent from './Marchent';
 import Reviews from './Reviews';
+import ReviewsSlider from './Reviews';
+import Qustion from './Qustion';
+
+
 
 const Home = () => {
     return (
@@ -13,10 +17,12 @@ const Home = () => {
            <Banner></Banner>
            <HowItWorks></HowItWorks>
            <OurService></OurService>
-           {/* <Brands></Brands> */}
+           <Brands></Brands>
            <Extrasection></Extrasection>
            <Marchent></Marchent>
-           <Reviews></Reviews>
+           {/* <Reviews></Reviews> */}
+           {/* <ReviewsSlider></ReviewsSlider> */}
+           <Qustion></Qustion>
            
 
         
