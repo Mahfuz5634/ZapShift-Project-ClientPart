@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../Components/Logo";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { GoArrowUpRight } from "react-icons/go";
 
 const Navbar = () => {
@@ -110,7 +110,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end flex gap-3 rounded-2xl">
-        <a className="btn">SIgn In</a>
+       <Link to={'/login'}> <a className="btn">SIgn In</a></Link>
         <a className="btn bg-primary">SignUp</a>
         
       </div>
