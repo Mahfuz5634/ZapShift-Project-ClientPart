@@ -58,7 +58,7 @@ const Covarage = () => {
           />
           <button
             type="submit"
-            className="bg-[#03373d] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#05545c] transition-all"
+            className="bg-primary text-black px-5 py-2 rounded-lg text-sm font-semibold hover:opacity-80 transition-all"
           >
             Search
           </button>
@@ -91,7 +91,7 @@ const Covarage = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 text-center">
         <div className="p-6 bg-white shadow-md rounded-xl border hover:shadow-lg transition-all">
-          <h2 className="text-xl font-bold text-[#03373d] mb-2">
+          <h2 className="text-2xl font-bold text-[#03373d] mb-2">
             Fast Delivery
           </h2>
           <p className="text-gray-600 text-sm">
@@ -99,7 +99,7 @@ const Covarage = () => {
           </p>
         </div>
         <div className="p-6 bg-white shadow-md rounded-xl border hover:shadow-lg transition-all">
-          <h2 className="text-xl font-bold text-[#03373d] mb-2">
+          <h2 className="text-2xl font-bold text-[#03373d] mb-2">
             Real-time Tracking
           </h2>
           <p className="text-gray-600 text-sm">
@@ -107,7 +107,7 @@ const Covarage = () => {
           </p>
         </div>
         <div className="p-6 bg-white shadow-md rounded-xl border hover:shadow-lg transition-all">
-          <h2 className="text-xl font-bold text-[#03373d] mb-2">
+          <h2 className="text-2xl font-bold text-[#03373d] mb-2">
             24/7 Support
           </h2>
           <p className="text-gray-600 text-sm">
