@@ -4,14 +4,76 @@ import { NavLink } from "react-router";
 import { GoArrowUpRight } from "react-icons/go";
 
 const Navbar = () => {
-    const links=<>
-     <NavLink className="mr-5">Services</NavLink>
-     <NavLink to={'/covarage'} className="mr-5">Covarage</NavLink>
-     <NavLink to={'about-us'} className="mr-5">About Us</NavLink>
-     <NavLink className="mr-5">Pricing</NavLink>
-     <NavLink className="mr-5">Blog</NavLink>
-     <NavLink className="mr-5">Contact</NavLink>
-    </>
+    const links = (
+  <>
+    <NavLink
+      to="/services"
+      className={({ isActive }) =>
+        `mr-1 px-2 py-1 rounded-md ${
+          isActive ? "bg-[#caeb66] text-black font-medium" : ""
+        }`
+      }
+    >
+      Services
+    </NavLink>
+
+    <NavLink
+      to="/covarage"
+      className={({ isActive }) =>
+        `mr-1 px-2 py-1 rounded-md ${
+          isActive ? "bg-[#caeb66] text-black font-medium" : ""
+        }`
+      }
+    >
+      Covarage
+    </NavLink>
+
+    <NavLink
+      to="/about-us"
+      className={({ isActive }) =>
+        `mr-1 px-2 py-1 rounded-md ${
+          isActive ? "bg-[#caeb66] text-black font-medium" : ""
+        }`
+      }
+    >
+      About Us
+    </NavLink>
+
+    <NavLink
+      to="/pricing"
+      className={({ isActive }) =>
+        `mr-1 px-2 py-1 rounded-md ${
+          isActive ? "bg-[#caeb66] text-black font-medium" : ""
+        }`
+      }
+    >
+      Pricing
+    </NavLink>
+
+    <NavLink
+      to="/blog"
+      className={({ isActive }) =>
+        `mr-1 px-2 py-1 rounded-md ${
+          isActive ? "bg-[#caeb66] text-black font-medium" : ""
+        }`
+      }
+    >
+      Blog
+    </NavLink>
+
+    <NavLink
+      to="/contact"
+      className={({ isActive }) =>
+        `mr-1 px-2 py-1 rounded-md ${
+          isActive ? "bg-[#caeb66] text-black font-medium" : ""
+        }`
+      }
+    >
+      Contact
+    </NavLink>
+  </>
+);
+
   return (
     <div className="navbar bg-white shadow-sm rounded-2xl p-2 lg:p-4">
       <div className="navbar-start">

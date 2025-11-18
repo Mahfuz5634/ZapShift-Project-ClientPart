@@ -65,7 +65,7 @@ const Covarage = () => {
         </form>
       </div>
 
-      <div className="w-full h-[500px] mt-10 border rounded-2xl overflow-hidden shadow-xl relative flex justify-center items-center">
+      <div className="w-full h-[500px] mt-10  rounded-2xl overflow-hidden shadow-xl relative flex justify-center items-center">
         <MapContainer
           className="h-full w-full"
           center={dhakaPosition}
@@ -90,7 +90,7 @@ const Covarage = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 text-center">
-        <div className="p-6 bg-white shadow-md rounded-xl border hover:shadow-lg transition-all">
+        <div className="p-6 bg-white shadow-md rounded-xl  hover:shadow-lg transition-all">
           <h2 className="text-2xl font-bold text-[#03373d] mb-2">
             Fast Delivery
           </h2>
@@ -98,7 +98,7 @@ const Covarage = () => {
             We ensure quick and safe delivery to every district.
           </p>
         </div>
-        <div className="p-6 bg-white shadow-md rounded-xl border hover:shadow-lg transition-all">
+        <div className="p-6 bg-white shadow-md rounded-xl hover:shadow-lg transition-all">
           <h2 className="text-2xl font-bold text-[#03373d] mb-2">
             Real-time Tracking
           </h2>
@@ -106,7 +106,7 @@ const Covarage = () => {
             Track your parcel live from pickup to arrival.
           </p>
         </div>
-        <div className="p-6 bg-white shadow-md rounded-xl border hover:shadow-lg transition-all">
+        <div className="p-6 bg-white shadow-md rounded-xl  hover:shadow-lg transition-all">
           <h2 className="text-2xl font-bold text-[#03373d] mb-2">
             24/7 Support
           </h2>

@@ -28,7 +28,7 @@ export default function AboutUs() {
           <h1 className="text-3xl md:text-4xl font-extrabold text-[#03373d]">
             About Us
           </h1>
-          <p className="mt-2 text-sm md:text-base text-gray-600 max-w-2xl">
+          <p className="mt-2 text-sm md:text-base text-gray-600 text-justify max-w-2xl">
             Enjoy fast, reliable parcel delivery with real-time tracking and
             zero hassle. From personal packages to business shipments — we
             deliver on time, every time.
@@ -71,9 +71,9 @@ export default function AboutUs() {
             aria-labelledby={`tab-${active}`}
             className="text-gray-700 leading-relaxed space-y-4 text-sm md:text-base"
           >
-            <p>{content[active]}</p>
+            <p className="text-justify">{content[active]}</p>
 
-            <p>
+            <p className="text-justify">
               We started with a simple promise — to make parcel delivery fast,
               reliable, and stress-free. Over the years, our commitment to
               real-time tracking, efficient logistics, and customer-first
@@ -82,7 +82,7 @@ export default function AboutUs() {
               it reaches its destination — on time, every time.
             </p>
 
-            <p>
+            <p className="text-justify">
               We started with a simple promise — to make parcel delivery fast,
               reliable, and stress-free. Over the years, our commitment to
               real-time tracking, efficient logistics, and customer-first
