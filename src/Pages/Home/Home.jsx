@@ -9,7 +9,7 @@ import Reviews from './Reviews';
 import ReviewsSlider from './Reviews';
 import Qustion from './Qustion';
 
-
+// const reviewsPromise = fetch('/reviews.json').then(res => res.json());
 
 const Home = () => {
     return (
@@ -20,8 +20,7 @@ const Home = () => {
            <Brands></Brands>
            <Extrasection></Extrasection>
            <Marchent></Marchent>
-           {/* <Reviews></Reviews> */}
-           {/* <ReviewsSlider></ReviewsSlider> */}
+            {/* <Reviews reviewsPromise={reviewsPromise}></Reviews> */}
            <Qustion></Qustion>
            
 
