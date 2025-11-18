@@ -8,65 +8,72 @@ const FAQSection = () => {
           Frequently Asked Questions (FAQ)
         </h1>
         <p className="text-center mt-2 opacity-85 text-sm md:text-base">
-          Enhance posture, mobility, and well-being effortlessly with Posture Pro.
-          Achieve proper <br /> alignment, reduce pain, and strengthen your body with ease!
+          Get your essentials delivered fast and safely with our reliable
+          delivery service.
+          Enjoy quick shipping,<br /> real-time tracking, and a hassle-free experience
+          every time!
         </p>
 
-       
         <div className="mt-8 space-y-3">
           <div className="collapse collapse-arrow bg-white border border-base-300">
             <input type="radio" name="accordion" defaultChecked />
             <div className="collapse-title font-semibold">
-              How does this posture corrector work?
+              How does your delivery service work?
             </div>
             <div className="collapse-content text-sm opacity-90">
-              A posture corrector works by providing support and gentle alignment to your shoulders, back, and spine, encouraging you to maintain proper posture throughout the day.
+              Our delivery service allows you to place an order online, and our
+              team ensures your items are picked, packed, and delivered to your
+              doorstep quickly and safely.
             </div>
           </div>
 
           <div className="collapse collapse-arrow bg-white border border-base-300">
             <input type="radio" name="accordion" />
             <div className="collapse-title font-semibold">
-              Is it suitable for all ages and body types?
+              Do you offer same-day delivery?
             </div>
             <div className="collapse-content text-sm opacity-90">
-              Yes, it's designed to be adjustable and comfortable for most ages and body types.
+              Yes, we offer same-day delivery for selected locations.
+              Availability may vary based on your area and order time.
             </div>
           </div>
 
           <div className="collapse collapse-arrow bg-white border border-base-300">
             <input type="radio" name="accordion" />
             <div className="collapse-title font-semibold">
-              Does it really help with back pain and posture improvement?
+              How can I track my order?
             </div>
             <div className="collapse-content text-sm opacity-90">
-              Consistent use may help relieve pain caused by poor posture and support long-term posture improvement.
+              Once your order is shipped, you will receive a tracking link via
+              email or SMS so you can monitor your delivery in real time.
             </div>
           </div>
 
           <div className="collapse collapse-arrow bg-white border border-base-300">
             <input type="radio" name="accordion" />
             <div className="collapse-title font-semibold">
-              Does it have smart features like vibration alerts?
+              What should I do if my package is delayed?
             </div>
             <div className="collapse-content text-sm opacity-90">
-              Some models come with built-in vibration reminders that alert you when you slouch.
+              If your package is delayed, you can check the updated status using
+              the tracking link or contact our customer support for assistance.
             </div>
           </div>
 
           <div className="collapse collapse-arrow bg-white border border-base-300">
             <input type="radio" name="accordion" />
             <div className="collapse-title font-semibold">
-              How will I be notified when the product is back in stock?
+              Do you offer cash on delivery?
             </div>
             <div className="collapse-content text-sm opacity-90">
-              You can subscribe to restock notifications using your email on the product page.
+              Yes, we offer cash on delivery for most orders. You can select
+              this option during checkout.
             </div>
           </div>
         </div>
 
         <div className="text-center mt-6">
-          <button className="bg-[#b1d9ce] px-6 py-2 rounded-xl text-[#03373d] font-semibold hover:opacity-90 transition">
+          <button className="bg-primary px-6 py-2 rounded-xl text-[#03373d] font-semibold hover:opacity-90 transition">
             See More FAQ's →
           </button>
         </div>
