@@ -111,7 +111,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end flex gap-3 rounded-2xl">
        <Link to={'/login'}> <a className="btn">SIgn In</a></Link>
-        <a className="btn bg-primary">SignUp</a>
+       <Link to={'/register'}> <a className="btn bg-primary">SignUp</a></Link>
         
       </div>
       <div className="rounded-full hidden  lg:block p-2 bg-primary ml-1.5">

@@ -2,16 +2,16 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 
-export default function Login() {
+const Login = () => {
   return (
     <div className="min-h-screen flex justify-center items-center  px-4">
       <div className="w-full max-w-sm mx-auto">
-        
         <h1 className="text-3xl font-extrabold text-gray-900">Welcome Back</h1>
         <p className="text-gray-600 mt-1">Login with ZapShift</p>
 
         {/* Form */}
         <form className="mt-6 space-y-4">
+          
           {/* Email */}
           <div>
             <label className="block text-gray-800 mb-1">Email</label>
@@ -41,7 +41,7 @@ export default function Login() {
           {/* Login Button */}
           <button
             type="submit"
-            className="w-full py-2 rounded-lg bg-[#caeb66] text-black font-medium hover:bg-[#b5d85b] transition"
+            className="w-full  py-2 rounded-lg bg-[#caeb66] text-black font-bold hover:bg-[#b5d85b] transition"
           >
             Login
           </button>
@@ -50,7 +50,10 @@ export default function Login() {
         {/* Register Link */}
         <p className="mt-4 text-gray-600 text-sm">
           Don’t have any account?{" "}
-          <Link to="/register" className="text-green-600 font-medium hover:underline">
+          <Link
+            to="/register"
+            className="text-green-600 font-medium hover:underline"
+          >
             Register
           </Link>
         </p>
@@ -67,8 +70,8 @@ export default function Login() {
           <FcGoogle size={22} />
           <span className="text-gray-700 font-medium">Login with Google</span>
         </button>
-
       </div>
     </div>
   );
-}
+};
+export default Login;
