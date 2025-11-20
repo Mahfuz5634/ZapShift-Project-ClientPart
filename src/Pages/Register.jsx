@@ -46,7 +46,7 @@ const Register = () => {
               className="w-full border border-gray-300 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-green-300"
             />
             {errors.name?.type === "required" && (
-              <p className="text-cyan-700">Your Name Is Needed!</p>
+              <p className="text-cyan-700">Your name is needed!</p>
             )}
           </div>
 
