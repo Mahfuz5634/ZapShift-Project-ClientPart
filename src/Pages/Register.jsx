@@ -2,8 +2,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+import useAuth from "../Hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Register = () => {
+  const {registerUser} = useAuth();
   const {
     register,
     handleSubmit,
@@ -11,7 +14,11 @@ const Register = () => {
   } = useForm();
 
   const handleregistration = (data) => {
-    console.log(data);
+    registerUser(data.email,data.password)
+    .then(()=>toast.success("Succesfully Register!"))
+    .catch(error=>{
+        toast.error(error.message);
+    })
   };
 
   return (
@@ -77,7 +84,7 @@ const Register = () => {
               <p className="text-cyan-700">Password is required!</p>
             )}
             {errors.password?.type === "minLength" && (
-              <p className="text-red-500">Password Atleast 6 Character!</p>
+              <p className="text-red-500">Password atleast 6 character!</p>
             )}
           </div>
 

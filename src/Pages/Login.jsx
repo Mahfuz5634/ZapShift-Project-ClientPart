@@ -1,8 +1,24 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+import useAuth from "../Hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const { signInUser } = useAuth();
+  const { register, handleSubmit } = useForm();
+
+  const handleLogin = (data) => {
+    signInUser(data.email, data.password)
+      .then(() => {
+        toast.success("Successfully Login");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   return (
     <div className="min-h-screen flex justify-center items-center  px-4">
       <div className="w-full max-w-sm mx-auto">
@@ -10,14 +26,14 @@ const Login = () => {
         <p className="text-gray-600 mt-1">Login with ZapShift</p>
 
         {/* Form */}
-        <form className="mt-6 space-y-4">
-          
+        <form onSubmit={handleSubmit(handleLogin)} className="mt-6 space-y-4">
           {/* Email */}
           <div>
             <label className="block text-gray-800 mb-1">Email</label>
             <input
               type="email"
               placeholder="Email"
+              {...register("email", { required: true })}
               className="w-full border border-gray-300 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-green-300"
             />
           </div>
@@ -28,6 +44,7 @@ const Login = () => {
             <input
               type="password"
               placeholder="Password"
+              {...register("password", { required: true })}
               className="w-full border border-gray-300 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-green-300"
             />
           </div>
