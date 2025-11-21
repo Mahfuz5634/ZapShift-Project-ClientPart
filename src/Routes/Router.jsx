@@ -8,6 +8,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Rider from "../Pages/Rider/Rider";
 import PrivateRoute from "./PrivateRoute";
+import ForgetPass from "../Pages/ForgetPass";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
         path:'/register',
         Component:Register
 
+      },
+      {
+        path:"/forget-pass",
+        Component:ForgetPass
       }
     ]
   }
