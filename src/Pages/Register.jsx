@@ -4,9 +4,10 @@ import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import useAuth from "../Hooks/useAuth";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const Register = () => {
-  const { registerUser, signIngoogle } = useAuth();
+  const { registerUser, signIngoogle, updateUserProfile } = useAuth();
 
   const googleSignIn = () => {
     signIngoogle()
@@ -23,7 +24,34 @@ const Register = () => {
 
   const handleregistration = (data) => {
     registerUser(data.email, data.password)
-      .then(() => toast.success("Succesfully Register!"))
+      .then(() => {
+
+        //store the image in formdata
+        const profileImg = data.photo[0];
+        const formData = new FormData();
+        formData.append("image", profileImg);
+        
+
+        //send the photo imgbb and get the url
+        const image_api_Url = `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_Image_Host
+        }`;
+        axios.post(image_api_Url, formData).then((res) => {
+          toast.success("Succesfully Register!");
+
+
+          //save the photo url and name in firebase
+          const userProfile = {
+            displayName: data.name,
+            photoURL: res.data.data.url,
+          };
+          updateUserProfile(userProfile)
+            .then()
+            .catch((error) => {
+              toast.success(error.message);
+            });
+        });
+      })
       .catch((error) => {
         toast.error(error.message);
       });
@@ -37,20 +65,17 @@ const Register = () => {
         </h1>
         <p className="text-gray-600 mt-1">Register with ZapShift</p>
 
-        <div className="flex justify-center mt-4 mb-4">
-          <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center border">
-            <img
-              src="/default-user.png"
-              alt="User"
-              className="w-8 opacity-80"
-            />
-          </div>
-        </div>
-
         <form
           onSubmit={handleSubmit(handleregistration)}
           className="mt-3 space-y-4 text-left"
         >
+          {/* photo */}
+          <fieldset className="fieldset">
+            <label className="fieldset-legend ">Profile picture</label>
+            <input type="file" {...register("photo")} className="file-input" />
+            <label className="label">Max size 2MB</label>
+          </fieldset>
+
           {/* Name */}
           <div>
             <label className="block text-gray-800 mb-1">Name</label>
