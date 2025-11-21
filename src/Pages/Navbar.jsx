@@ -2,77 +2,88 @@ import React from "react";
 import Logo from "../Components/Logo";
 import { Link, NavLink } from "react-router";
 import { GoArrowUpRight } from "react-icons/go";
+import useAuth from "../Hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-    const links = (
-  <>
-    <NavLink
-      to="/"
-      className={({ isActive }) =>
-        `mr-1 px-2 py-1 rounded-md font-bold ${
-          isActive ? "bg-[#caeb66] text-black font-bold " : ""
-        }`
-      }
-    >
-      Services
-    </NavLink>
+  const { user ,logOut} = useAuth();
 
-    <NavLink
-      to="/covarage"
-      className={({ isActive }) =>
-        `mr-1 px-2 py-1 rounded-md font-bold ${
-          isActive ? "bg-[#caeb66] text-black font-bold" : ""
-        }`
-      }
-    >
-      Covarage
-    </NavLink>
+  const handlelogout=()=>{
+      logOut()
+      .then(()=>toast.success("SignOut Succesfully"))
+      .catch(error=>{
+        toast.error(error.message)
+      })
+  }
+  const links = (
+    <>
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          `mr-1 px-2 py-1 rounded-md font-bold ${
+            isActive ? "bg-[#caeb66] text-black font-bold " : ""
+          }`
+        }
+      >
+        Services
+      </NavLink>
 
-    <NavLink
-      to="/about-us"
-      className={({ isActive }) =>
-        `mr-1 px-2 py-1 rounded-md font-bold ${
-          isActive ? "bg-[#caeb66] text-black font-bold" : ""
-        }`
-      }
-    >
-      About Us
-    </NavLink>
+      <NavLink
+        to="/covarage"
+        className={({ isActive }) =>
+          `mr-1 px-2 py-1 rounded-md font-bold ${
+            isActive ? "bg-[#caeb66] text-black font-bold" : ""
+          }`
+        }
+      >
+        Covarage
+      </NavLink>
 
-    <NavLink
-      to="/pricing"
-      className={({ isActive }) =>
-        `mr-1 px-2 py-1 rounded-md font-bold ${
-          isActive ? "bg-[#caeb66] text-black font-bold" : ""
-        }`
-      }
-    >
-      Pricing
-    </NavLink>
+      <NavLink
+        to="/about-us"
+        className={({ isActive }) =>
+          `mr-1 px-2 py-1 rounded-md font-bold ${
+            isActive ? "bg-[#caeb66] text-black font-bold" : ""
+          }`
+        }
+      >
+        About Us
+      </NavLink>
 
-    <NavLink
-      to="/blog"
-      className={({ isActive }) =>
-        `mr-1 px-2 py-1 rounded-md font-bold ${
-          isActive ? "bg-[#caeb66] text-black font-bold" : ""
-        }`
-      }
-    >
-      Blog
-    </NavLink>
+      <NavLink
+        to="/pricing"
+        className={({ isActive }) =>
+          `mr-1 px-2 py-1 rounded-md font-bold ${
+            isActive ? "bg-[#caeb66] text-black font-bold" : ""
+          }`
+        }
+      >
+        Pricing
+      </NavLink>
 
-    <NavLink
-      to="/contact"
-      className={({ isActive }) =>
-        `mr-1 px-2 py-1 rounded-md font-bold ${
-          isActive ? "bg-[#caeb66] text-black font-bold" : ""
-        }`
-      }
-    >
-      Contact
-    </NavLink>
-  </>
-);
+      <NavLink
+        to="/blog"
+        className={({ isActive }) =>
+          `mr-1 px-2 py-1 rounded-md font-bold ${
+            isActive ? "bg-[#caeb66] text-black font-bold" : ""
+          }`
+        }
+      >
+        Blog
+      </NavLink>
+
+      <NavLink
+        to="/contact"
+        className={({ isActive }) =>
+          `mr-1 px-2 py-1 rounded-md font-bold ${
+            isActive ? "bg-[#caeb66] text-black font-bold" : ""
+          }`
+        }
+      >
+        Contact
+      </NavLink>
+    </>
+  );
 
   return (
     <div className="navbar bg-white shadow-sm rounded-2xl p-2 lg:p-4">
@@ -99,24 +110,43 @@ const Navbar = () => {
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-           {links}
+            {links}
           </ul>
         </div>
-        <a className="text-xl ml-5"><Logo></Logo></a>
+        <a className="text-xl ml-5">
+          <Logo></Logo>
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {links}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end flex gap-3 rounded-2xl">
-       <Link to={'/login'}> <a className="btn">SIgn In</a></Link>
-       <Link to={'/register'}> <a className="btn bg-primary">SignUp</a></Link>
-        
+        {user ? (
+          <>
+           <Link onClick={handlelogout} className="btn">
+            Sign Out
+          </Link>
+           <Link className="btn bg-primary">
+              Be a rider
+            </Link>
+          
+          </>
+
+         
+        ) : (
+          <>
+            <Link to="/login" className="btn">
+              Sign In
+            </Link>
+            <Link to="/register" className="btn bg-primary">
+              Sign Up
+            </Link>
+          </>
+        )}
       </div>
       <div className="rounded-full hidden  lg:block p-2 bg-primary ml-1.5">
-            <GoArrowUpRight />
-        </div>
+        <GoArrowUpRight />
+      </div>
     </div>
   );
 };

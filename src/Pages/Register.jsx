@@ -6,7 +6,15 @@ import useAuth from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 
 const Register = () => {
-  const {registerUser} = useAuth();
+  const { registerUser, signIngoogle } = useAuth();
+
+  const googleSignIn = () => {
+    signIngoogle()
+      .then(() => toast.success("Login Succesfully"))
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   const {
     register,
     handleSubmit,
@@ -14,11 +22,11 @@ const Register = () => {
   } = useForm();
 
   const handleregistration = (data) => {
-    registerUser(data.email,data.password)
-    .then(()=>toast.success("Succesfully Register!"))
-    .catch(error=>{
+    registerUser(data.email, data.password)
+      .then(() => toast.success("Succesfully Register!"))
+      .catch((error) => {
         toast.error(error.message);
-    })
+      });
   };
 
   return (
@@ -116,7 +124,10 @@ const Register = () => {
         </div>
 
         {/* Google button */}
-        <button className="w-full border border-gray-200 bg-gray-100 py-2.5 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-200 transition">
+        <button
+          onClick={googleSignIn}
+          className="w-full border border-gray-200 bg-gray-100 py-2.5 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-200 transition"
+        >
           <FcGoogle size={22} />
           <span className="text-gray-700 font-medium">
             Register with Google

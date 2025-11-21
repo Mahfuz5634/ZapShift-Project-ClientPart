@@ -6,8 +6,16 @@ import useAuth from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { signInUser } = useAuth();
+  const { signInUser,signIngoogle } = useAuth();
   const { register, handleSubmit } = useForm();
+
+  const googleSignIn=()=>{
+      signIngoogle()
+      .then(()=>toast.success("Login Succesfully"))
+      .catch(error=>{
+        toast.error(error.message);
+      })
+    }
 
   const handleLogin = (data) => {
     signInUser(data.email, data.password)
@@ -83,7 +91,7 @@ const Login = () => {
         </div>
 
         {/* Google Login */}
-        <button className="w-full border border-gray-300 bg-gray-100 py-2 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-200 transition">
+        <button onClick={googleSignIn} className="w-full border border-gray-300 bg-gray-100 py-2 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-200 transition">
           <FcGoogle size={22} />
           <span className="text-gray-700 font-medium">Login with Google</span>
         </button>
