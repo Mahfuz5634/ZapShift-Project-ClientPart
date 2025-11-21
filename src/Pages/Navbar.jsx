@@ -126,7 +126,7 @@ const Navbar = () => {
            <Link onClick={handlelogout} className="btn">
             Sign Out
           </Link>
-           <Link className="btn bg-primary">
+           <Link to={'/rider'} className="btn bg-primary">
               Be a rider
             </Link>
           

@@ -6,6 +6,8 @@ import AboutUs from "../Pages/Aboutus";
 import AuthLayout from "../Layout/AuthLayout";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import Rider from "../Pages/Rider/Rider";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +24,10 @@ export const router = createBrowserRouter([
     {
       path:'/about-us',
       Component:AboutUs,
+    },
+    {
+      path:'/rider',
+      element:<PrivateRoute><Rider></Rider></PrivateRoute>
     }
    ]
   },

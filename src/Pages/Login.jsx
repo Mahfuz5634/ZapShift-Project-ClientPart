@@ -1,17 +1,22 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import useAuth from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 
 const Login = () => {
   const { signInUser,signIngoogle } = useAuth();
   const { register, handleSubmit } = useForm();
+  const location =useLocation();
+  const navigate =useNavigate();
 
   const googleSignIn=()=>{
       signIngoogle()
-      .then(()=>toast.success("Login Succesfully"))
+      .then(()=>{
+        toast.success("Login Succesfully",{})
+        navigate(location.state?.from?.pathname || "/")
+      })
       .catch(error=>{
         toast.error(error.message);
       })
@@ -21,6 +26,7 @@ const Login = () => {
     signInUser(data.email, data.password)
       .then(() => {
         toast.success("Successfully Login");
+         navigate(location.state?.from?.pathname || "/")
       })
       .catch((error) => {
         toast.error(error.message);
@@ -76,6 +82,7 @@ const Login = () => {
         <p className="mt-4 text-gray-600 text-sm">
           Don’t have any account?{" "}
           <Link
+            state={location.state}
             to="/register"
             className="text-green-600 font-medium hover:underline"
           >

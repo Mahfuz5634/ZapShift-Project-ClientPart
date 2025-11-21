@@ -1,13 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useAuth from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 import axios from "axios";
 
 const Register = () => {
   const { registerUser, signIngoogle, updateUserProfile } = useAuth();
+  const navigate=useNavigate();
 
   const googleSignIn = () => {
     signIngoogle()
@@ -30,14 +31,14 @@ const Register = () => {
         const profileImg = data.photo[0];
         const formData = new FormData();
         formData.append("image", profileImg);
-        
+
 
         //send the photo imgbb and get the url
         const image_api_Url = `https://api.imgbb.com/1/upload?key=${
           import.meta.env.VITE_Image_Host
         }`;
         axios.post(image_api_Url, formData).then((res) => {
-          toast.success("Succesfully Register!");
+          
 
 
           //save the photo url and name in firebase
@@ -46,7 +47,11 @@ const Register = () => {
             photoURL: res.data.data.url,
           };
           updateUserProfile(userProfile)
-            .then()
+            .then(()=>{
+                toast.success("Succesfully Register!");
+                navigate('/')
+
+            })
             .catch((error) => {
               toast.success(error.message);
             });
@@ -134,6 +139,7 @@ const Register = () => {
         <p className="mt-3 text-gray-600 text-sm text-center">
           Already have an account?{" "}
           <Link
+            state={location.state}
             to="/login"
             className="text-green-600 font-medium hover:underline"
           >
