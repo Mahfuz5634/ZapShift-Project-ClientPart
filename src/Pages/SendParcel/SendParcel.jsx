@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const SendParcel = () => {
   const [parcelType, setParcelType] = useState("Document");
@@ -10,14 +11,57 @@ const SendParcel = () => {
   } = useForm();
 
   const handlePercel = (data) => {
-      console.log(data);
+    const isDocument = data.parcelType === "Document";
+    const isSameDistrict = data.senderDistrict === data.receiverDistrict;
+    const parcelWeight = parseFloat(data.parcelWeight);
+
+    let cost = 0;
+    if (isDocument) {
+      cost = isSameDistrict ? 60 : 80;
+    } else {
+      if (parcelWeight < 3) {
+        cost = isSameDistrict ? 110 : 150;
+      } else {
+        const minCharge = isSameDistrict ? 110 : 150;
+        const extraWeight = parcelWeight - 3;
+        const extraCharge = isSameDistrict
+          ? extraWeight * 40
+          : extraWeight * 40 + 40;
+
+        cost = minCharge + extraCharge;
+      }
+    }
+     Swal.fire({
+            title: "Agree with the Cost?",
+            text: `You will be charged ${cost} taka!`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "I agree!"
+        }).then((result) => {
+            // if (result.isConfirmed) {
+
+            //     // save the parcel info to the database
+            //     axiosSecure.post('/parcels', data)
+            //         .then(res => {
+            //             console.log('after saving parcel', res.data);
+            //         })
+
+            //     // Swal.fire({
+            //     //     title: "Deleted!",
+            //     //     text: "Your file has been deleted.",
+            //     //     icon: "success"
+            //     // });
+            // }
+        });
   };
 
   return (
-    <div className="container mx-auto p-6 my-8 bg-white shadow-md rounded-2xl">
+    <div className="container mx-auto p-8 md:p-15 my-8 bg-white shadow-md rounded-2xl">
       <h1 className="text-3xl text-[#03373d] font-bold mb-6">Send A Parcel</h1>
 
-      <p className="mb-4">Enter your parcel details</p>
+      <p className="mb-4 text-gray-500">Enter your parcel details</p>
 
       {/* Parcel Type */}
       <form onSubmit={handleSubmit(handlePercel)}>
@@ -26,7 +70,7 @@ const SendParcel = () => {
             <input
               type="radio"
               value="Document"
-              {...register('parcelType')}
+              {...register("parcelType")}
               checked={parcelType === "Document"}
               onChange={() => setParcelType("Document")}
             />
@@ -36,7 +80,7 @@ const SendParcel = () => {
             <input
               type="radio"
               value="Not-Document"
-              {...register('parcelType')}
+              {...register("parcelType")}
               checked={parcelType === "Not-Document"}
               onChange={() => setParcelType("Not-Document")}
             />
@@ -49,12 +93,12 @@ const SendParcel = () => {
           <input
             type="text"
             placeholder="Parcel Name"
-            {...register('parcelName')}
+            {...register("parcelName")}
             className="input border p-2 rounded w-full"
           />
           <input
             type="text"
-              {...register('parcelWeight')}
+            {...register("parcelWeight")}
             placeholder="Parcel Weight (KG)"
             className="input border p-2 rounded w-full"
           />
@@ -67,41 +111,42 @@ const SendParcel = () => {
             <h2 className="font-semibold mb-3">Sender Details</h2>
             <input
               type="text"
-                {...register('senderName')}
+              {...register("senderName")}
               placeholder="Sender Name"
               className="input border p-2 rounded w-full mb-3"
             />
             <input
               type="text"
               placeholder="Sender Address"
-                {...register('senderAddress')}
+              {...register("senderAddress")}
               className="input border p-2 rounded w-full mb-3"
             />
-             <input
+            <input
               type="text"
               placeholder="Sender Email"
-                {...register('senderEmail')}
+              {...register("senderEmail")}
               className="input border p-2 rounded w-full mb-3"
             />
             <input
               type="text"
               placeholder="Sender Phone No"
-                {...register('senderPhone')}
+              {...register("senderPhone")}
               className="input border p-2 rounded w-full mb-3"
             />
-            <select className="select border p-2 rounded w-full mb-3"
-             {...register('senderDistrict')}>
-              <option >Select your District</option>
+            <select
+              className="select border p-2 rounded w-full mb-3"
+              {...register("senderDistrict")}
+            >
+              <option>Select your District</option>
               <option>Dhaka</option>
               <option>Barishal</option>
               <option>Chandpur</option>
               <option>Rangpur</option>
-               
             </select>
             <textarea
               placeholder="Pickup Instruction"
               className="textarea border p-2 rounded w-full"
-               {...register('senderText')}
+              {...register("senderText")}
             />
           </div>
 
@@ -111,36 +156,39 @@ const SendParcel = () => {
             <input
               type="text"
               placeholder="Receiver Name"
-               {...register('receiverName')}
+              {...register("receiverName")}
               className="input border p-2 rounded w-full mb-3"
             />
             <input
               type="text"
               placeholder="Receiver Address"
-               {...register('receiverAdress')}
-              className="input border p-2 rounded w-full mb-3"
-            />
-             <input
-              type="text"
-              placeholder="Receiver Email"
-                {...register('receiverEmail')}
+              {...register("receiverAdress")}
               className="input border p-2 rounded w-full mb-3"
             />
             <input
               type="text"
+              placeholder="Receiver Email"
+              {...register("receiverEmail")}
+              className="input border p-2 rounded w-full mb-3"
+            />
+            <input
+              type="text"
+                {...register("receiverPhone")}
               placeholder="Receiver Contact No"
               className="input border p-2 rounded w-full mb-3"
             />
-            <select className="select border p-2 rounded w-full mb-3"
-             {...register('receiverDistrict')}>
-              <option >Select your District</option>
+            <select
+              className="select border p-2 rounded w-full mb-3"
+              {...register("receiverDistrict")}
+            >
+              <option>Select your District</option>
               <option>Dhaka</option>
               <option>Barishal</option>
               <option>Chandpur</option>
               <option>Rangpur</option>
             </select>
             <textarea
-             {...register('reciverText')}
+              {...register("reciverText")}
               placeholder="Delivery Instruction"
               className="textarea border p-2 rounded w-full"
             />
