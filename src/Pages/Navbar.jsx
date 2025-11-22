@@ -59,10 +59,10 @@ const Navbar = () => {
         }
       >
         Pricing
-      </NavLink> 
+      </NavLink>
 
       <NavLink
-      to={'/send-parcel'}
+        to={"/send-parcel"}
         className={({ isActive }) =>
           `mr-1 px-2 py-1 rounded-md font-bold ${
             isActive ? "bg-[#caeb66] text-black font-bold " : ""
@@ -152,9 +152,17 @@ const Navbar = () => {
           </>
         )}
       </div>
-      <div className="rounded-full hidden  lg:block p-2 bg-primary ml-1.5">
-        <GoArrowUpRight />
-      </div>
+      {user ? (
+         <img
+          src={user.photoURL}
+          alt={user.displayName}
+          className="w-8 h-8 rounded-full object-cover md:ml-2"
+        />
+      ) : (
+        <div className="rounded-full hidden lg:block p-2 bg-primary ml-1.5">
+          <GoArrowUpRight />
+        </div>
+      )}
     </div>
   );
 };
