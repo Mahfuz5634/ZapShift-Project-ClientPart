@@ -6,15 +6,15 @@ import useAuth from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const { user ,logOut} = useAuth();
+  const { user, logOut } = useAuth();
 
-  const handlelogout=()=>{
-      logOut()
-      .then(()=>toast.success("SignOut Succesfully"))
-      .catch(error=>{
-        toast.error(error.message)
-      })
-  }
+  const handlelogout = () => {
+    logOut()
+      .then(() => toast.success("SignOut Succesfully"))
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   const links = (
     <>
       <NavLink
@@ -59,6 +59,17 @@ const Navbar = () => {
         }
       >
         Pricing
+      </NavLink> 
+
+      <NavLink
+      to={'/send-parcel'}
+        className={({ isActive }) =>
+          `mr-1 px-2 py-1 rounded-md font-bold ${
+            isActive ? "bg-[#caeb66] text-black font-bold " : ""
+          }`
+        }
+      >
+        Send Percel
       </NavLink>
 
       <NavLink
@@ -123,16 +134,13 @@ const Navbar = () => {
       <div className="navbar-end flex gap-3 rounded-2xl">
         {user ? (
           <>
-           <Link onClick={handlelogout} className="btn">
-            Sign Out
-          </Link>
-           <Link to={'/rider'} className="btn bg-primary">
+            <Link onClick={handlelogout} className="btn">
+              Sign Out
+            </Link>
+            <Link to={"/rider"} className="btn bg-primary">
               Be a rider
             </Link>
-          
           </>
-
-         
         ) : (
           <>
             <Link to="/login" className="btn">
