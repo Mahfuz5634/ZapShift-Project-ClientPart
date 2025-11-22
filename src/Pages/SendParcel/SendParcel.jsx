@@ -15,7 +15,7 @@ const SendParcel = () => {
 
   return (
     <div className="container mx-auto p-6 my-8 bg-white shadow-md rounded-2xl">
-      <h1 className="text-2xl font-bold mb-6">Send A Parcel</h1>
+      <h1 className="text-3xl text-[#03373d] font-bold mb-6">Send A Parcel</h1>
 
       <p className="mb-4">Enter your parcel details</p>
 
@@ -50,13 +50,13 @@ const SendParcel = () => {
             type="text"
             placeholder="Parcel Name"
             {...register('parcelName')}
-            className="border p-2 rounded w-full"
+            className="input border p-2 rounded w-full"
           />
           <input
             type="text"
               {...register('parcelWeight')}
             placeholder="Parcel Weight (KG)"
-            className="border p-2 rounded w-full"
+            className="input border p-2 rounded w-full"
           />
         </div>
 
@@ -69,37 +69,38 @@ const SendParcel = () => {
               type="text"
                 {...register('senderName')}
               placeholder="Sender Name"
-              className="border p-2 rounded w-full mb-3"
+              className="input border p-2 rounded w-full mb-3"
             />
             <input
               type="text"
               placeholder="Sender Address"
                 {...register('senderAddress')}
-              className="border p-2 rounded w-full mb-3"
+              className="input border p-2 rounded w-full mb-3"
             />
              <input
               type="text"
               placeholder="Sender Email"
                 {...register('senderEmail')}
-              className="border p-2 rounded w-full mb-3"
+              className="input border p-2 rounded w-full mb-3"
             />
             <input
               type="text"
               placeholder="Sender Phone No"
                 {...register('senderPhone')}
-              className="border p-2 rounded w-full mb-3"
+              className="input border p-2 rounded w-full mb-3"
             />
-            <select className="border p-2 rounded w-full mb-3"
+            <select className="select border p-2 rounded w-full mb-3"
              {...register('senderDistrict')}>
-              <option>Select your District</option>
+              <option >Select your District</option>
               <option>Dhaka</option>
               <option>Barishal</option>
               <option>Chandpur</option>
+              <option>Rangpur</option>
                
             </select>
             <textarea
               placeholder="Pickup Instruction"
-              className="border p-2 rounded w-full"
+              className="textarea border p-2 rounded w-full"
                {...register('senderText')}
             />
           </div>
@@ -111,36 +112,37 @@ const SendParcel = () => {
               type="text"
               placeholder="Receiver Name"
                {...register('receiverName')}
-              className="border p-2 rounded w-full mb-3"
+              className="input border p-2 rounded w-full mb-3"
             />
             <input
               type="text"
               placeholder="Receiver Address"
                {...register('receiverAdress')}
-              className="border p-2 rounded w-full mb-3"
+              className="input border p-2 rounded w-full mb-3"
             />
              <input
               type="text"
               placeholder="Receiver Email"
                 {...register('receiverEmail')}
-              className="border p-2 rounded w-full mb-3"
+              className="input border p-2 rounded w-full mb-3"
             />
             <input
               type="text"
               placeholder="Receiver Contact No"
-              className="border p-2 rounded w-full mb-3"
+              className="input border p-2 rounded w-full mb-3"
             />
-            <select className="border p-2 rounded w-full mb-3"
+            <select className="select border p-2 rounded w-full mb-3"
              {...register('receiverDistrict')}>
-              <option>Select your District</option>
+              <option >Select your District</option>
               <option>Dhaka</option>
               <option>Barishal</option>
               <option>Chandpur</option>
+              <option>Rangpur</option>
             </select>
             <textarea
              {...register('reciverText')}
               placeholder="Delivery Instruction"
-              className="border p-2 rounded w-full"
+              className="textarea border p-2 rounded w-full"
             />
           </div>
         </div>
