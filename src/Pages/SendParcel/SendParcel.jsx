@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAuth from "../../Hooks/useAuth";
 
 const SendParcel = () => {
   const [parcelType, setParcelType] = useState("Document");
@@ -9,6 +11,9 @@ const SendParcel = () => {
     handleSubmit,
     // formState: { errors },
   } = useForm();
+
+  const axiosSecure = useAxiosSecure();
+  const {user}=useAuth();
 
   const handlePercel = (data) => {
     const isDocument = data.parcelType === "Document";
@@ -31,30 +36,31 @@ const SendParcel = () => {
         cost = minCharge + extraCharge;
       }
     }
-     Swal.fire({
-            title: "Agree with the Cost?",
-            text: `You will be charged ${cost} taka!`,
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "I agree!"
-        }).then((result) => {
-            // if (result.isConfirmed) {
+    Swal.fire({
+      title: "Agree with the Cost?",
+      text: `You will be charged ${cost} taka!`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "I agree!",
+    }).then((result) => {
 
-            //     // save the parcel info to the database
-            //     axiosSecure.post('/parcels', data)
-            //         .then(res => {
-            //             console.log('after saving parcel', res.data);
-            //         })
-
-            //     // Swal.fire({
-            //     //     title: "Deleted!",
-            //     //     text: "Your file has been deleted.",
-            //     //     icon: "success"
-            //     // });
-            // }
+      if (result.isConfirmed) {
+        //save the info in database
+        axiosSecure.post("/parcel", data)
+        .then((res) => {
+          console.log(res.data);
         });
+      }
+
+      //     // Swal.fire({
+      //     //     title: "Deleted!",
+      //     //     text: "Your file has been deleted.",
+      //     //     icon: "success"
+      //     // });
+      // }
+    });
   };
 
   return (
@@ -113,6 +119,7 @@ const SendParcel = () => {
               type="text"
               {...register("senderName")}
               placeholder="Sender Name"
+              defaultValue={user?.displayName}
               className="input border p-2 rounded w-full mb-3"
             />
             <input
@@ -125,6 +132,7 @@ const SendParcel = () => {
               type="text"
               placeholder="Sender Email"
               {...register("senderEmail")}
+              defaultValue={user?.email}
               className="input border p-2 rounded w-full mb-3"
             />
             <input
@@ -173,7 +181,7 @@ const SendParcel = () => {
             />
             <input
               type="text"
-                {...register("receiverPhone")}
+              {...register("receiverPhone")}
               placeholder="Receiver Contact No"
               className="input border p-2 rounded w-full mb-3"
             />

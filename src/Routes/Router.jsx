@@ -10,49 +10,71 @@ import Rider from "../Pages/Rider/Rider";
 import PrivateRoute from "./PrivateRoute";
 import ForgetPass from "../Pages/ForgetPass";
 import SendParcel from "../Pages/SendParcel/SendParcel";
+import DashboardLayout from "../Layout/DashboardLayout";
+import Myparcels from "../Pages/Dashboard/Myparcels";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-   Component:RootLayout,
-   children:[
-    {
-        index:true,
-        Component:Home,
-    },{
-      path:'/covarage',
-      Component:Covarage,
-    },
-    {
-      path:'/about-us',
-      Component:AboutUs,
-    },
-    {
-      path:'/rider',
-      element:<PrivateRoute><Rider></Rider></PrivateRoute>
-    },
-    {
-      path:"/send-parcel",
-       element:<PrivateRoute><SendParcel></SendParcel></PrivateRoute>
-    }
-   ]
-  },
-  {
-    path:'/',
-    Component:AuthLayout,
-    children:[
+    Component: RootLayout,
+    children: [
       {
-        path:'/login',
-        Component:Login
-      },{
-        path:'/register',
-        Component:Register
-
+        index: true,
+        Component: Home,
       },
       {
-        path:"/forget-pass",
-        Component:ForgetPass
+        path: "/covarage",
+        Component: Covarage,
+      },
+      {
+        path: "/about-us",
+        Component: AboutUs,
+      },
+      {
+        path: "/rider",
+        element: (
+          <PrivateRoute>
+            <Rider></Rider>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/send-parcel",
+        element: (
+          <PrivateRoute>
+            <SendParcel></SendParcel>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/",
+    Component: AuthLayout,
+    children: [
+      {
+        path: "/login",
+        Component: Login,
+      },
+      {
+        path: "/register",
+        Component: Register,
+      },
+      {
+        path: "/forget-pass",
+        Component: ForgetPass,
+      },
+    ],
+  },
+  {
+    path:"/dashboard",
+    element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    children:[
+      {
+        path:'my-parcels',
+        element:<Myparcels></Myparcels>,
+
       }
     ]
-  }
+  },
 ]);

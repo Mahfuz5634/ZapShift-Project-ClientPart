@@ -72,16 +72,18 @@ const Navbar = () => {
         Send Percel
       </NavLink>
 
-      <NavLink
-        to="/blog"
+      {
+        user?<NavLink
+        to="/dashboard/my-parcels"
         className={({ isActive }) =>
           `mr-1 px-2 py-1 rounded-md font-bold ${
             isActive ? "bg-[#caeb66] text-black font-bold" : ""
           }`
         }
       >
-        Blog
-      </NavLink>
+        My Parcel
+      </NavLink>:""
+      }
 
       <NavLink
         to="/contact"
