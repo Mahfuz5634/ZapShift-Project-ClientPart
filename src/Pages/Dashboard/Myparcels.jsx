@@ -2,6 +2,7 @@ import React from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router";
 
 const Myparcels = () => {
   const axiosSecure = useAxiosSecure();
@@ -16,6 +17,8 @@ const Myparcels = () => {
     },
   });
 
+  
+
   if (isLoading) {
     return (
       <div className="text-center py-10 text-xl font-semibold">
@@ -26,7 +29,6 @@ const Myparcels = () => {
 
   return (
     <div className="p-6">
-      {/* Header */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold">📦 My Parcels</h1>
         <p className="text-gray-500">
@@ -34,7 +36,6 @@ const Myparcels = () => {
         </p>
       </div>
 
-      {/* Table */}
       <div className="overflow-x-auto shadow-lg rounded-lg border border-gray-200">
         <table className="w-full text-left text-sm">
           <thead className="bg-gray-100 text-gray-700 uppercase text-xs font-semibold">
@@ -46,6 +47,7 @@ const Myparcels = () => {
               <th className="px-6 py-4">From</th>
               <th className="px-6 py-4">To</th>
               <th className="px-6 py-4">Status</th>
+              <th className="px-6 py-4">Pay</th>
             </tr>
           </thead>
 
@@ -75,6 +77,17 @@ const Myparcels = () => {
                     {parcel.status}
                   </span>
                 </td>
+
+                {/* ✅ Pay Button Column */}
+                <td className="px-6 py-3">
+                  <Link to={`/dashboard/paybill/${parcel._id}`}
+                    
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs font-semibold"
+                  >
+                    Pay
+                  </Link>
+                </td>
+
               </tr>
             ))}
           </tbody>
