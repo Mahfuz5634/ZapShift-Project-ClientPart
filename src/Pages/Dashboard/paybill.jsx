@@ -9,22 +9,70 @@ const Paybill = () => {
 
   useEffect(() => {
     axiosSecure.get(`/paybill/${id}`)
-      .then(res => {
-        setData(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      .then(res => setData(res.data))
+      .catch(err => console.log(err));
   }, [id, axiosSecure]);
 
-  return (
-    <div>
-      <h1>Pay Bill Page</h1>
-      <p>Parcel ID: {id}</p>
+  const handlePayment = async () => {
+    const paymentInfo = {
+      cost: Number(data.cost),
+      parcelID: data._id,
+      senderEmail: data.senderEmail,
+      parcelName: data.parcelName,
+    };
 
-      {data && (
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      )}
+    try {
+      const res = await axiosSecure.post('/create-checkout-session', paymentInfo);
+      window.location.href = res.data.url;
+    } catch (error) {
+      console.error("Payment error:", error.response?.data || error.message);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-gray-100 to-gray-200 p-6">
+
+      <div className="max-w-md w-full p-8 rounded-2xl shadow-2xl 
+                      bg-white/70 backdrop-blur-xl border border-white/40">
+
+        {/* Header */}
+        <h1 className="text-3xl font-bold text-center mb-4"
+            style={{ color: "#2d2d2d" }}>
+          Complete Your Payment
+        </h1>
+
+        {/* Underline Accent */}
+        <div className="w-20 h-1 mx-auto rounded-full mb-8"
+             style={{ backgroundColor: "#caeb66" }}></div>
+
+        {/* Parcel Details Card */}
+        <div className="bg-gray-50 p-5 rounded-xl border mb-8 shadow-sm">
+
+          <p className="text-lg font-semibold text-gray-700">Parcel Name</p>
+          <p className="text-gray-600 mb-4">{data?.parcelName}</p>
+
+          <p className="text-lg font-semibold text-gray-700">Sender Email</p>
+          <p className="text-gray-600 mb-4">{data?.senderEmail}</p>
+
+          <p className="text-lg font-semibold text-gray-700">Amount to Pay</p>
+
+          <p className="text-4xl font-extrabold mt-2"
+             style={{ color: "#caeb66" }}>
+            ${data?.cost}
+          </p>
+        </div>
+
+        {/* Pay Button */}
+        <button
+          onClick={handlePayment}
+          className="w-full py-3 rounded-xl font-semibold text-xl shadow-lg 
+                     transition-all duration-200 transform hover:scale-105"
+          style={{ backgroundColor: "#caeb66", color: "#1f1f1f" }}
+        >
+          Proceed to Payment
+        </button>
+
+      </div>
     </div>
   );
 };

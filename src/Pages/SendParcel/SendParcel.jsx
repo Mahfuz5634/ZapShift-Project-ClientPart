@@ -36,6 +36,8 @@ const SendParcel = () => {
         cost = minCharge + extraCharge;
       }
     }
+    data.cost=cost;
+    console.log(data);
     Swal.fire({
       title: "Agree with the Cost?",
       text: `You will be charged ${cost} taka!`,
