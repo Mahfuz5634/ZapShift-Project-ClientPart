@@ -1,12 +1,26 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { useEffect } from "react";
+import { Link, useSearchParams } from "react-router";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const PaymentSucces = () => {
+  const [searchParams] = useSearchParams();
+  const sessionId = searchParams.get("session_id");
+  const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    if (sessionId) {
+      axiosSecure
+        .patch(`/payment-success?session_id=${sessionId}`)
+
+        .then((res) => {
+          console.log(res);
+        });
+    }
+  }, [sessionId, axiosSecure]);
+
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-100 p-6">
-
       <div className="bg-white shadow-2xl rounded-2xl p-10 max-w-md w-full text-center border border-gray-200">
-
         {/* Success Icon */}
         <div className="flex justify-center mb-6">
           <div
@@ -35,8 +49,8 @@ const PaymentSucces = () => {
 
         {/* Message */}
         <p className="text-gray-600 mb-8">
-          Thank you! Your payment has been processed successfully.
-          A confirmation email has been sent to you.
+          Thank you! Your payment has been processed successfully. A
+          confirmation email has been sent to you.
         </p>
 
         {/* Back to Dashboard */}
@@ -47,7 +61,6 @@ const PaymentSucces = () => {
         >
           Back to Dashboard
         </Link>
-
       </div>
     </div>
   );

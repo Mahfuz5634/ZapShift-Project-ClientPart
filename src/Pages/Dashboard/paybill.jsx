@@ -16,7 +16,7 @@ const Paybill = () => {
   const handlePayment = async () => {
     const paymentInfo = {
       cost: Number(data.cost),
-      parcelID: data._id,
+      parcelId: data._id,
       senderEmail: data.senderEmail,
       parcelName: data.parcelName,
     };
